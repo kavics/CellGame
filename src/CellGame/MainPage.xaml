@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:drawable="clr-namespace:CellGame"
+             x:Class="CellGame.MainPage">
+    <ContentPage.Resources>
+        <drawable:GraphicsDrawable x:Key="drawable" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <HorizontalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+            <!--<Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />-->
+
+            <GraphicsView x:Name="DrawingBoard"
+                          Drawable="{StaticResource drawable}"
+                          HeightRequest="600"
+                          WidthRequest="800" />
+
+            <VerticalStackLayout Spacing="4" Padding="30,0" VerticalOptions="Start">
+                <Button
+                    x:Name="StartBtn"
+                    Text="Start"
+                    WidthRequest="100"
+                    Clicked="OnStartClicked"
+                    HorizontalOptions="Start" />
+                <Button
+                    x:Name="StepBtn"
+                    Text="Step"
+                    WidthRequest="100"
+                    Clicked="OnStepClicked"
+                    HorizontalOptions="Start" />
+                <Border
+                    WidthRequest="100" HorizontalOptions="Start">
+                    <Label TextColor="Gray"
+                           x:Name="DisplayLabel"
+                           Text="..gen.."
+                           FontSize="16"
+                           HorizontalOptions="End" />
+                </Border>
+                <Button
+                    x:Name="ClearBtn"
+                    Text="Clear"
+                    WidthRequest="100"
+                    Clicked="OnClearClicked"
+                    HorizontalOptions="Start" />
+                <Button
+                    x:Name="GenerateRandomBtn"
+                    Text="Random"
+                    WidthRequest="100"
+                    Clicked="OnGenerateRandomClicked"
+                    HorizontalOptions="Start" />
+                <Button
+                    x:Name="GenerateRandomBulletBtn"
+                    Text="Bullet"
+                    WidthRequest="100"
+                    Clicked="OnGenerateRandomBulletClicked"
+                    HorizontalOptions="Start" />
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Infinite" TextColor="Gray"  FontSize="16" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"/>
+                    <Switch  Grid.Column="1" Grid.Row="0"
+                             x:Name="InfiniteSwitch"
+                             IsToggled="true"
+                             HorizontalOptions="End" 
+                             Toggled="OnInfiniteToggled" />
+                    <Label Text="Dark" TextColor="Gray" FontSize="16" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"/>
+                    <Switch  Grid.Column="1" Grid.Row="1"
+                             x:Name="DarkModeSwitch"
+                             IsToggled="false"
+                             HorizontalOptions="End" 
+                             Toggled="OnDarkModeToggled" />
+                    <Label Text="Glowing" TextColor="Gray" FontSize="16" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+                    <Switch  Grid.Column="1" Grid.Row="2"
+                             x:Name="GlowingSwitch"
+                             IsToggled="false"
+                             HorizontalOptions="End" 
+                             Toggled="OnGlowingToggled" />
+                </Grid>
+
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+    </ScrollView>
+</ContentPage>
