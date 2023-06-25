@@ -6,94 +6,203 @@
     <ContentPage.Resources>
         <drawable:GraphicsDrawable x:Key="drawable" />
     </ContentPage.Resources>
+    <!--<ContentPage.BindingContext>
+        <local:MainPageViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>-->
     <ScrollView>
-        <HorizontalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-            <!--<Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />-->
+        <!--<Label
+            Text="Welcome to .NET Multi-platform App UI"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+            FontSize="18"
+            HorizontalOptions="Center" />-->
+        <VerticalStackLayout>
+            <!--<HorizontalStackLayout x:Name="LandscapeDisplay"
+                                   IsVisible="false"
+                                   Spacing="25"
+                                   Padding="30,0"
+                                   VerticalOptions="Center">
 
-            <GraphicsView x:Name="DrawingBoard"
-                          Drawable="{StaticResource drawable}"
-                          HeightRequest="600"
-                          WidthRequest="800" />
+                <GraphicsView x:Name="DrawingBoard"
+                              Drawable="{StaticResource drawable}"
+                              HeightRequest="600"
+                              WidthRequest="800"
+                              Scale="1.0" />
 
-            <VerticalStackLayout Spacing="4" Padding="30,0" VerticalOptions="Start">
-                <Button
-                    x:Name="StartBtn"
-                    Text="Start"
-                    WidthRequest="100"
-                    Clicked="OnStartClicked"
-                    HorizontalOptions="Start" />
-                <Button
-                    x:Name="StepBtn"
-                    Text="Step"
-                    WidthRequest="100"
-                    Clicked="OnStepClicked"
-                    HorizontalOptions="Start" />
-                <Border
-                    WidthRequest="100" HorizontalOptions="Start">
-                    <Label TextColor="Gray"
-                           x:Name="DisplayLabel"
-                           Text="..gen.."
-                           FontSize="16"
-                           HorizontalOptions="End" />
-                </Border>
-                <Button
-                    x:Name="ClearBtn"
-                    Text="Clear"
-                    WidthRequest="100"
-                    Clicked="OnClearClicked"
-                    HorizontalOptions="Start" />
-                <Button
-                    x:Name="GenerateRandomBtn"
-                    Text="Random"
-                    WidthRequest="100"
-                    Clicked="OnGenerateRandomClicked"
-                    HorizontalOptions="Start" />
-                <Button
-                    x:Name="GenerateRandomBulletBtn"
-                    Text="Bullet"
-                    WidthRequest="100"
-                    Clicked="OnGenerateRandomBulletClicked"
-                    HorizontalOptions="Start" />
+                <VerticalStackLayout Spacing="4" Padding="30,0" VerticalOptions="Start">
+                    <Button
+                        x:Name="StartBtn"
+                        Text="Start"
+                        WidthRequest="100"
+                        Clicked="OnStartClicked"
+                        HorizontalOptions="Start" />
+                    <Button
+                        x:Name="StepBtn"
+                        Text="Step"
+                        WidthRequest="100"
+                        Clicked="OnStepClicked"
+                        HorizontalOptions="Start" />
+                    <Border
+                        WidthRequest="100" HorizontalOptions="Start">
+                        <Label TextColor="Gray"
+                               x:Name="DisplayLabel"
+                               Text="..gen.."
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+                    <Button
+                        x:Name="ClearBtn"
+                        Text="Clear"
+                        WidthRequest="100"
+                        Clicked="OnClearClicked"
+                        HorizontalOptions="Start" />
+                    <Button
+                        x:Name="GenerateRandomBtn"
+                        Text="Random"
+                        WidthRequest="100"
+                        Clicked="OnGenerateRandomClicked"
+                        HorizontalOptions="Start" />
+                    <Button
+                        x:Name="GenerateRandomBulletBtn"
+                        Text="Bullet"
+                        WidthRequest="100"
+                        Clicked="OnGenerateRandomBulletClicked"
+                        HorizontalOptions="Start" />
 
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="64" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Infinite" TextColor="Gray"  FontSize="16" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"/>
+                        <Switch  Grid.Column="1" Grid.Row="0"
+                                 x:Name="InfiniteSwitch"
+                                 IsToggled="true"
+                                 HorizontalOptions="End" 
+                                 Toggled="OnInfiniteToggled" />
+                        <Label Text="Dark" TextColor="Gray" FontSize="16" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"/>
+                        <Switch  Grid.Column="1" Grid.Row="1"
+                                 x:Name="DarkModeSwitch"
+                                 IsToggled="false"
+                                 HorizontalOptions="End" 
+                                 Toggled="OnDarkModeToggled" />
+                        <Label Text="Glowing" TextColor="Gray" FontSize="16" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+                        <Switch  Grid.Column="1" Grid.Row="2"
+                                 x:Name="GlowingSwitch"
+                                 IsToggled="false"
+                                 HorizontalOptions="End" 
+                                 Toggled="OnGlowingToggled" />
+                    </Grid>
+
+                </VerticalStackLayout>
+            </HorizontalStackLayout>-->
+            <VerticalStackLayout x:Name="PortraitDisplay"
+                                 IsVisible="true"
+                                 Spacing="1"
+                                 Padding="2,2"
+                                 HorizontalOptions="Start">
+
+                <HorizontalStackLayout Spacing="2" Padding="0,0" HorizontalOptions="Start">
+                    <Button
+                        x:Name="StartBtn"
+                        Text="Start"
+                        WidthRequest="62"
+                        HeightRequest="36"
+                        Padding="0,0,0,0"
+                        Clicked="OnStartClicked"
+                        HorizontalOptions="Start" />
+                    <Button
+                        x:Name="StepBtn"
+                        Text="Step"
+                        WidthRequest="62"
+                        HeightRequest="36"
+                        Padding="0,0,0,0"
+                        Clicked="OnStepClicked"
+                        HorizontalOptions="Start" />
+                    <Border
+                        WidthRequest="64"
+                        HeightRequest="38"
+                        HorizontalOptions="Start">
+                        <Label TextColor="Gray"
+                               x:Name="DisplayLabel"
+                               Text="..gen.."
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+                    <Button
+                        x:Name="ClearBtn"
+                        Text="Clear"
+                        WidthRequest="62"
+                        HeightRequest="36"
+                        Padding="0,0,0,0"
+                        Clicked="OnClearClicked"
+                        HorizontalOptions="Start" />
+                    <Button
+                        x:Name="GenerateRandomBtn"
+                        Text="Random"
+                        WidthRequest="62"
+                        HeightRequest="36"
+                        Padding="0,0,0,0"
+                        Clicked="OnGenerateRandomClicked"
+                        HorizontalOptions="Start" />
+                    <Button
+                        x:Name="GenerateRandomBulletBtn"
+                        Text="Bullet"
+                        WidthRequest="62"
+                        HeightRequest="36"
+                        Padding="0,0,0,0"
+                        Clicked="OnGenerateRandomBulletClicked"
+                        HorizontalOptions="Start" />
+
+
+                </HorizontalStackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
-                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="64" />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
                     </Grid.ColumnDefinitions>
                     <Label Text="Infinite" TextColor="Gray"  FontSize="16" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"/>
-                    <Switch  Grid.Column="1" Grid.Row="0"
+                    <Switch  Grid.Column="0" Grid.Row="1"
                              x:Name="InfiniteSwitch"
                              IsToggled="true"
-                             HorizontalOptions="End" 
+                             HorizontalOptions="Start" 
                              Toggled="OnInfiniteToggled" />
-                    <Label Text="Dark" TextColor="Gray" FontSize="16" Grid.Column="0" Grid.Row="1" VerticalOptions="Center"/>
+                    <Label Text="Dark" TextColor="Gray" FontSize="16" Grid.Column="1" Grid.Row="0" VerticalOptions="Center"/>
                     <Switch  Grid.Column="1" Grid.Row="1"
                              x:Name="DarkModeSwitch"
                              IsToggled="false"
-                             HorizontalOptions="End" 
+                             HorizontalOptions="Start" 
                              Toggled="OnDarkModeToggled" />
-                    <Label Text="Glowing" TextColor="Gray" FontSize="16" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
-                    <Switch  Grid.Column="1" Grid.Row="2"
+                    <Label Text="Glowing" TextColor="Gray" FontSize="16" Grid.Column="2" Grid.Row="0" VerticalOptions="Center"/>
+                    <Switch  Grid.Column="2" Grid.Row="1"
                              x:Name="GlowingSwitch"
                              IsToggled="false"
-                             HorizontalOptions="End" 
+                             HorizontalOptions="Start" 
                              Toggled="OnGlowingToggled" />
                 </Grid>
 
+                <GraphicsView x:Name="DrawingBoard"
+                              Drawable="{StaticResource drawable}"
+                              WidthRequest="600"
+                              Scale="0.64" />
+
             </VerticalStackLayout>
-        </HorizontalStackLayout>
+
+        </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>

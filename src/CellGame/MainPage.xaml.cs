@@ -7,14 +7,19 @@ public partial class MainPage : ContentPage
     private readonly Timer _timer;
     Color _originalBackgroundColor;
 
+    private bool _isPortrait = true;
+
     public MainPage()
 	{
 		InitializeComponent();
 
-        _world = new World(80, 60);
+        _world = _isPortrait
+            ? new World(60, 80)
+            : new World(80, 60);
+
         ((GraphicsDrawable)DrawingBoard.Drawable).World = _world;
         _world.InitializeRandom();
-		_timer = new Timer(OnTimerTick, null, 0, 10);
+		_timer = new Timer(OnTimerTick, null, 0, 400);
 
         _originalBackgroundColor = this.BackgroundColor;
 
@@ -38,7 +43,7 @@ public partial class MainPage : ContentPage
 
         sb.AppendLine($"Virtual device? {isVirtual}");
 
-        sb.AppendLine();
+        sb.AppendLine("---------------------");
 
         sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width} / Pixel Height: {DeviceDisplay.Current.MainDisplayInfo.Height}");
         sb.AppendLine($"Density: {DeviceDisplay.Current.MainDisplayInfo.Density}");
@@ -47,6 +52,7 @@ public partial class MainPage : ContentPage
         sb.AppendLine($"Refresh Rate: {DeviceDisplay.Current.MainDisplayInfo.RefreshRate}");
 
         var deviceInfo = sb.ToString();
+
     }
 
     private bool _running;
